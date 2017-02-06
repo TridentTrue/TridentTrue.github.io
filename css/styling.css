@@ -1,0 +1,402 @@
+/*
+	  /$$$$$$                                                   /$$
+	 /$$__  $$                                                 | $$
+	| $$  \__/  /$$$$$$  /$$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$ | $$
+	| $$ /$$$$ /$$__  $$| $$__  $$ /$$__  $$ /$$__  $$|____  $$| $$
+	| $$|_  $$| $$$$$$$$| $$  \ $$| $$$$$$$$| $$  \__/ /$$$$$$$| $$
+	| $$  \ $$| $$_____/| $$  | $$| $$_____/| $$      /$$__  $$| $$
+	|  $$$$$$/|  $$$$$$$| $$  | $$|  $$$$$$$| $$     |  $$$$$$$| $$
+	 \______/  \_______/|__/  |__/ \_______/|__/      \_______/|__/
+*/
+*:focus {
+	outline: none !important;
+}
+
+a,
+a:visited,
+a:visited:hover,
+a:visited:focus {
+	color: inherit;
+	color: unset;
+	font-weight: bold;
+}
+
+a:hover,
+a:focus,
+a:visited:hover,
+a:visited:focus {
+	text-decoration: underline;
+}
+
+/* Use before iframe to ensure it cannot be interacted with until clicked on */
+.element-overlay {
+	background:transparent;
+	position:relative;
+	width:100%;
+	height:400px; /* height of iframe */
+	top:400px; /* height of iframe */
+	margin-top:-400px; /* height of iframe */
+}
+
+/* Use this to vertically centre columns in a row */
+/* CREATES SPACES BETWEEN INLINE-BLOCK ELEMENTS USE http://stackoverflow.com/a/20548578 TO FIX THIS */
+.vcenter {
+	display: inline-block;
+	vertical-align: middle;
+	float: none;
+
+	.clearfix:after {
+		content: " ";
+		visibility: hidden;
+		display: block;
+		height: 0;
+		clear: both;
+	}
+}
+
+/*Change mobile nav @media breakpoint*/
+@media (max-width: 991px) {
+	.navbar-header {
+		float: none;
+		margin-right: -15px !important;
+	}
+	.navbar-left,.navbar-right {
+		float: none !important;
+	}
+	.navbar-toggle {
+		display: block;
+	}
+	.navbar-collapse {
+		border-top: 1px solid transparent;
+		box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+	}
+	.navbar-fixed-top {
+		top: 0;
+		border-width: 0 0 1px;
+	}
+	.navbar-collapse.collapse {
+		display: none!important;
+	}
+	.navbar-nav {
+		float: none!important;
+		margin-top: 7.5px;
+		margin-bottom: 7.5px;
+		margin-left: -15px;
+		margin-right: -15px;
+	}
+	.navbar-nav>li {
+		float: none;
+	}
+	.navbar-nav>li>a {
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+	.collapse.in{
+		display:block !important;
+	}
+	.container {
+		width: initial;
+		width: unset;
+	}
+}
+/*
+	 /$$$$$$$$                                                                   /$$
+	|__  $$__/                                                                  | $$
+	   | $$ /$$   /$$  /$$$$$$   /$$$$$$   /$$$$$$   /$$$$$$  /$$$$$$   /$$$$$$ | $$$$$$$  /$$   /$$
+	   | $$| $$  | $$ /$$__  $$ /$$__  $$ /$$__  $$ /$$__  $$|____  $$ /$$__  $$| $$__  $$| $$  | $$
+	   | $$| $$  | $$| $$  \ $$| $$  \ $$| $$  \ $$| $$  \__/ /$$$$$$$| $$  \ $$| $$  \ $$| $$  | $$
+	   | $$| $$  | $$| $$  | $$| $$  | $$| $$  | $$| $$      /$$__  $$| $$  | $$| $$  | $$| $$  | $$
+	   | $$|  $$$$$$$| $$$$$$$/|  $$$$$$/|  $$$$$$$| $$     |  $$$$$$$| $$$$$$$/| $$  | $$|  $$$$$$$
+	   |__/ \____  $$| $$____/  \______/  \____  $$|__/      \_______/| $$____/ |__/  |__/ \____  $$
+			/$$  | $$| $$                 /$$  \ $$                   | $$                 /$$  | $$
+		   |  $$$$$$/| $$                |  $$$$$$/                   | $$                |  $$$$$$/
+			\______/ |__/                 \______/                    |__/                 \______/
+*/
+
+body {
+	font-size: 16px;
+}
+
+ul {
+	font-family: 'Raleway', sans-serif;
+	letter-spacing: 1px;
+}
+
+.navbar .navbar-brand {
+	font-family: 'Lobster', cursive;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: 'Roboto', sans-serif;
+}
+
+/*
+	 /$$   /$$                      /$$
+	| $$$ | $$                     | $$
+	| $$$$| $$  /$$$$$$  /$$    /$$| $$$$$$$   /$$$$$$   /$$$$$$
+	| $$ $$ $$ |____  $$|  $$  /$$/| $$__  $$ |____  $$ /$$__  $$
+	| $$  $$$$  /$$$$$$$ \  $$/$$/ | $$  \ $$  /$$$$$$$| $$  \__/
+	| $$\  $$$ /$$__  $$  \  $$$/  | $$  | $$ /$$__  $$| $$
+	| $$ \  $$|  $$$$$$$   \  $/   | $$$$$$$/|  $$$$$$$| $$
+	|__/  \__/ \_______/    \_/    |_______/  \_______/|__/
+*/
+
+.navbar {
+	background-color: #1fa67a;
+	border: 0;
+	border-radius: 0;
+	transition: top 0.2s ease-out;
+}
+.nav-up {
+	top: -70px;
+}
+
+.navbar .navbar-nav {
+	list-style-type: none;
+	margin-top: 18px;
+}
+
+.nav-tabs {
+	border: 0;
+}
+
+
+/*           Navbar-Logo          */
+.navbar .navbar-brand {
+	height: auto;
+	background-color: #fff;
+	color: #1fa67a;
+	margin: 12px 0 8px 15px;
+	border-radius: 15px;
+	box-shadow: -4px -3px 0 #1d9d74,-9px -8px 0 rgba(0,0,0,0.15);
+}
+
+.navbar .navbar-brand:hover,
+.navbar .navbar-brand:focus {
+	background-color: #1A8D68;
+	color: #fff;
+}
+
+
+/*           Navbar-burger          */
+.navbar .navbar-toggle {
+	background-color: #fff;
+	margin-top: 17px;
+}
+.navbar .navbar-toggle:hover,
+.navbar .navbar-toggle:focus {
+	background-color: #8871B5;
+	border-color: #8871B5;
+}
+/*           Navbar-burger lines         */
+.navbar .navbar-toggle .icon-bar {
+	background-color: #1A8D68;
+}
+.navbar .navbar-toggle:focus .icon-bar,
+.navbar .navbar-toggle:hover .icon-bar {
+	background-color: #fff;
+}
+
+
+/*           Non-active links          */
+.navbar .navbar-nav li a {
+	background-color: #263A40;
+	color: #fff;
+	margin: 0;
+	border-radius: 0;
+	border-color: transparent;
+}
+/*           Non-active links:hover          */
+.navbar .navbar-nav > li > a:focus,
+.navbar .navbar-nav > li > a:hover,
+.navbar .navbar-nav > .open > a {
+	background-color: #fff;
+	color: #263A40;
+}
+@media only screen and (min-width: 992px) {
+	.navbar .navbar-nav li a {
+		margin-right: 4px;
+		border-radius: 10px 10px 0 0;
+	}
+}
+
+/*           Active links          */
+.navbar .navbar-nav > .active > a,
+.navbar .navbar-nav > .active > a:focus,
+.navbar .navbar-nav > .active > a:hover,
+.navbar .navbar-nav > .open > a {
+	background-color: #fff;
+	color: #263A40;
+}
+
+.navbar .navbar-nav > li > .profile-tab {
+	background-color: #8871B5;
+	color: #fff;
+}
+
+.navbar .navbar-nav > li > .profile-tab:focus,
+.navbar .navbar-nav > li > .profile-tab:hover,
+.navbar .navbar-nav > .active > .profile-tab,
+.navbar .navbar-nav > .active > .profile-tab:focus,
+.navbar .navbar-nav > .active > .profile-tab:hover {
+	background-color: #584975;
+	color: #fff;
+}
+
+
+/*           dropdown-menu links:hover          */
+.dropdown-menu > li > a:focus,
+.dropdown-menu > li > a:hover {
+
+}
+/*            Active dropdown-menu links          */
+.dropdown-menu > .active > a,
+.dropdown-menu > .active > a:focus,
+.dropdown-menu > .active > a:hover {
+
+}
+/* Display nav dropdowns on hover */
+.nav .dropdown:hover ul.dropdown-menu {
+	display: block;
+}
+/* Disable the above behaviour on mobile screens. Frig this took me ages to work out. */
+@media only screen and (max-width:767px) {
+	.dropdown-menu {
+		display: none !important;
+	}
+
+	.open .dropdown-menu {
+		display: block !important;
+	}
+}
+
+
+/*
+	  /$$$$$$  /$$       /$$           /$$
+	 /$$__  $$|__/      | $$          | $$
+	| $$  \__/ /$$  /$$$$$$$  /$$$$$$ | $$$$$$$   /$$$$$$   /$$$$$$
+	|  $$$$$$ | $$ /$$__  $$ /$$__  $$| $$__  $$ |____  $$ /$$__  $$
+	 \____  $$| $$| $$  | $$| $$$$$$$$| $$  \ $$  /$$$$$$$| $$  \__/
+	 /$$  \ $$| $$| $$  | $$| $$_____/| $$  | $$ /$$__  $$| $$
+	|  $$$$$$/| $$|  $$$$$$$|  $$$$$$$| $$$$$$$/|  $$$$$$$| $$
+	 \______/ |__/ \_______/ \_______/|_______/  \_______/|__/
+*/
+.sidebar {
+	display: none;
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 70px;
+	height: 100%;
+	width: 200px;
+	overflow-y: auto;
+	background-color: #263A40;
+	color: #fff;
+}
+@media only screen and (min-width: 992px) {
+	.sidebar {
+		display: block;
+	}
+}
+
+.sidebar ul {
+	list-style-type: none;
+	margin:0;
+	padding: 20px 0;
+}
+
+.sidebar ul a {
+	display: block;
+	width: 100%;
+	padding: 5px 20px;
+}
+.sidebar ul a:hover,
+.sidebar ul a:focus,
+.sidebar .active a,
+.sidebar .active a:focus,
+.sidebar .active a:active {
+	text-decoration: none;
+	background-color: #8871B5;
+	color: #fff;
+}
+
+/*
+	 /$$      /$$           /$$
+	| $$$    /$$$          |__/
+	| $$$$  /$$$$  /$$$$$$  /$$ /$$$$$$$
+	| $$ $$/$$ $$ |____  $$| $$| $$__  $$
+	| $$  $$$| $$  /$$$$$$$| $$| $$  \ $$
+	| $$\  $ | $$ /$$__  $$| $$| $$  | $$
+	| $$ \/  | $$|  $$$$$$$| $$| $$  | $$
+	|__/     |__/ \_______/|__/|__/  |__/
+*/
+@media only screen and (min-width: 992px) {
+	.main-wrapper {
+		margin-left: 200px;
+	}
+}
+
+body {
+	margin-top: 90px;
+	background-color: #eee;
+}
+
+section {
+	background-color: #fff;
+	border: 1px solid #aaa;
+	border-radius: 40px;
+	padding: 20px;
+	margin-bottom: 30px;
+}
+section h1 {
+	text-align: center;
+}
+
+.flexicon-wrapper {
+	display: flex;
+	justify-content: center;
+	align-content: flex-start;
+	flex-flow: row wrap;
+	height: auto;
+}
+
+.flexicon {
+	border: 2px solid #1FA67A;
+	background: url("http://placehold.it/250x250/8ABCFF/FFF?text=placeholder") center center;
+	width: 250px;
+	height: 250px;
+	border-radius: 1000px;
+	margin: 0.5em;
+}
+
+.panel {
+	border-radius: 20px 20px 0 0;
+}
+.panel-default>.panel-heading {
+	border-radius: 20px 20px 0 0;
+	background-color: #1FA67A;
+	border-color: #1FA67A;
+	color: #fff;
+}
+.panel-title {
+	font-size: 24px;
+	display: inline-block;
+}
+.table-hover>tbody>tr:hover {
+    background-color: #7dd1e2;
+    cursor: pointer;
+}
+.panel-button {
+	display: inline-block;
+	width: auto;
+	border: 2px solid #fff;
+	border-radius: 10px;
+	padding: 3px 8px;
+	float: right;
+}
+.panel-button:hover,
+.panel-button:focus {
+	text-decoration: none;
+	background-color: #fff;
+	color: #1FA67A !important;
+}
